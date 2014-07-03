@@ -1,4 +1,4 @@
-# moomin [![Build Status](https://travis-ci.org/andystanton/moomin-engine.svg?branch=master)](https://travis-ci.org/andystanton/moomin-engine)
+# moomin [![Build Status](https://travis-ci.org/andystanton/moomin-example.svg?branch=master)](https://travis-ci.org/andystanton/moomin-example)
 
 An example GLFW app using the Moomin physics engine.
 
