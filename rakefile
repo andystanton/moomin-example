@@ -13,7 +13,6 @@ deep_clean_list = [
     "lib/*/CMakeScripts",
     "lib/*.a",
     "lib/gmock/gtest",
-    "lib/freetype2/include/ftconfig.hpp",
     "lib/Debug",
     "lib/Release",
     "build"

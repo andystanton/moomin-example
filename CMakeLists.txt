@@ -2,8 +2,8 @@
 # Project Properties
 #
 CMAKE_MINIMUM_REQUIRED (VERSION 2.8)
-PROJECT (moomin)
-SET (APPLICATION_NAME "Moomin")
+PROJECT (moomin-example)
+SET (APPLICATION_NAME "Moomin Example")
 SET (APPLICATION_CODENAME "${PROJECT_NAME}")
 SET (APPLICATION_COPYRIGHT_YEARS "2014")
 SET (APPLICATION_VERSION_MAJOR 1)
@@ -97,7 +97,7 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lc++")
 
 # add subdirectory
 add_subdirectory(lib/moomin)
-set(GLFW_INCLUDE_PATH "${MAINFOLDER}/lib/moomin/include")
+set(MOOMIN_INCLUDE_PATH "${MAINFOLDER}/lib/moomin/include")
 
 # GLFW
 
@@ -125,25 +125,16 @@ set(GLM_INCLUDE_PATH "${MAINFOLDER}/lib/glm")
 
 set(GLM_INCLUDE_PATH "${MAINFOLDER}/lib/glm")
 
-# GMOCK
-
-add_subdirectory(lib/gmock)
-set_property(TARGET gmock APPEND_STRING PROPERTY COMPILE_FLAGS " -w")
-set_property(TARGET gmock_main APPEND_STRING PROPERTY COMPILE_FLAGS " -w")
-set_property(TARGET gtest APPEND_STRING PROPERTY COMPILE_FLAGS " -w")
-set_property(TARGET gtest_main APPEND_STRING PROPERTY COMPILE_FLAGS " -w")
-set(GTEST_INCLUDE_PATH "${gtest_SOURCE_DIR}/include")
-set(GMOCK_INCLUDE_PATH "${gmock_SOURCE_DIR}/include")
-
-# BANDIT
-
-add_subdirectory(lib/bandit)
-set(BANDIT_INCLUDE_PATH "${MAINFOLDER}/lib/bandit")
-
 #
 # Add Build Targets
 #
 ADD_SUBDIRECTORY(src)
+
+# Test Includes
+
+set(GTEST_INCLUDE_PATH "${MAINFOLDER}/lib/moomin/lib/gtest/include")
+set(GMOCK_INCLUDE_PATH "${MAINFOLDER}/lib/moomin/lib/gmock/include")
+set(BANDIT_INCLUDE_PATH "${MAINFOLDER}/lib/moomin/lib/bandit")
 
 #
 # Add Test Targets

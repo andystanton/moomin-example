@@ -30,7 +30,9 @@ set_source_files_properties("${CMAKE_CURRENT_LIST_DIR}/spec/util/FloatingPointHe
 #     message(${source})
 # endforeach()
 
-ADD_EXECUTABLE(${test_BIN} ${test_SRCS} ${ALL_SRCS})
-TARGET_LINK_LIBRARIES(${test_BIN} ${test_LIBS} ${test_LIBS})
+#ADD_EXECUTABLE(${test_BIN} ${test_SRCS} ${ALL_SRCS})
+#TARGET_LINK_LIBRARIES(${test_BIN} ${test_LIBS} ${test_LIBS})
+ADD_EXECUTABLE(${test_BIN} ${test_SRCS})
+TARGET_LINK_LIBRARIES(${test_BIN} ${test_LIBS})
 
 ADD_TEST(${test_BIN} ${EXECUTABLE_OUTPUT_PATH}/${test_BIN} --reporter=spec)

@@ -11,9 +11,10 @@ SET (project_LIBS
 SET (project_INCLUDES
      ${GLFW_INCLUDE_PATH}
      ${GLM_INCLUDE_PATH}
-     ${GLEW_INCLUDE_PATH})
+     ${GLEW_INCLUDE_PATH}
+     ${MOOMIN_INCLUDE_PATH})
 
-SET (project_BIN ${PROJECT_NAME}-example)
+SET (project_BIN ${PROJECT_NAME})
 
 ADD_EXECUTABLE(${project_BIN} ${project_SRCS})
 
@@ -23,7 +24,7 @@ include_directories(${project_INCLUDES})
 
 TARGET_LINK_LIBRARIES(${project_BIN} ${project_LIBS} ${project_LIBS})
 
-copy_files("${MAINFOLDER}/example/shaders" "${EXECUTABLE_OUTPUT_PATH}")
+copy_files("${MAINFOLDER}/src/shaders" "${EXECUTABLE_OUTPUT_PATH}")
 
 SET_TARGET_PROPERTIES(${project_BIN} PROPERTIES VERSION "${APPLICATION_VERSION_MAJOR}.${APPLICATION_VERSION_MINOR}" OUTPUT_NAME ${project_BIN} CLEAN_DIRECT_OUTPUT 1)
 
