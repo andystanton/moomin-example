@@ -1,7 +1,3 @@
-[submodule "lib/moomin"]
-	path = lib/moomin
-	url = https://github.com/andystanton/moomin.git
-	ignore = dirty
 [submodule "lib/glfw"]
 	path = lib/glfw
 	url = https://github.com/glfw/glfw.git
