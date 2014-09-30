@@ -5,6 +5,7 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include <memory>
 
 #include <GL/glew.h>
 
@@ -25,6 +26,7 @@ using std::fixed;
 using std::cout;
 using std::cerr;
 using std::endl;
+using std::unique_ptr;
 
 class GLCoordinator
 {
