@@ -13,12 +13,13 @@ An example GLFW app using the Moomin physics engine.
 ## Quick Start
 
 ```
-git clone https://github.com/andystanton/moomin-example.git --recursive && cd moomin-example
+git clone https://github.com/andystanton/moomin-example.git --recursive
+
+cd moomin-example
+
 rake default start
 ```
 
 ## Features
 
 See the [moomin](https://github.com/andystanton/moomin#moomin-) repository for a list of features.
-
-
