@@ -9,6 +9,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 #include <set>
+#include <memory>
 
 #include "Renderer.hpp"
 #include "model/Entity.hpp"

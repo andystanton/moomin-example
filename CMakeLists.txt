@@ -1,7 +1,7 @@
 #
 # Project Properties
 #
-CMAKE_MINIMUM_REQUIRED (VERSION 2.8)
+CMAKE_MINIMUM_REQUIRED (VERSION 2.8.12)
 PROJECT (moomin-example)
 SET (APPLICATION_NAME "Moomin Example")
 SET (APPLICATION_CODENAME "${PROJECT_NAME}")
@@ -72,22 +72,27 @@ LIST (APPEND CMAKE_PREFIX_PATH "${MAINFOLDER}")
 INCLUDE_DIRECTORIES("${MAINFOLDER}/include")
 
 # set compiler warnings
-set(CMAKE_CXX_FLAGS "-g -O0 -Wall -Wextra -Werror -Wfloat-equal -Wno-unused-parameter")
+set(CMAKE_CXX_FLAGS "-g -O0 -Wall -Wextra -Werror -Wfloat-equal -Wno-unused-parameter -Wno-unknown-pragmas")
 
-# set c++ 11
-
-if (CMAKE_COMPILER_IS_GNUCXX)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
-    if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-        set(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY "libc++")
-    endif ()
-elseif (MSVC)
+#
+# Enable C++11
+#
+IF(CMAKE_COMPILER_IS_GNUCXX)
+    IF(CMAKE_CXX_COMPILER_VERSION VERSION_LESS "4.7")
+        MESSAGE(FATAL_ERROR "Compiler does not support C++11")
+    ELSE()
+        SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+    ENDIF()
+ELSEIF(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -stdlib=libc++")
+    IF(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+        SET(CMAKE_XCODE_ATTRIBUTE_CLANG_CXX_LIBRARY "libc++")
+    ENDIF()
+ELSEIF(MSVC)
     # On by default
-endif ()
-
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lc++")
+ELSE()
+    MESSAGE(FATAL_ERROR "Compiler not supported")
+ENDIF()
 
 #
 # Locate Project Prerequisites
