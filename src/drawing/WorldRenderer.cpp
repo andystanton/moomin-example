@@ -96,12 +96,11 @@ void WorldRenderer::drawGrid(int spacing)
 
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferGrid);
 
-    int numLinesHorizontal = (width / spacing);
-    int numLinesVertical = (height / spacing);
+    int numLinesHorizontal = (width / spacing) - 1;
+    int numLinesVertical = (height / spacing) - 1;
+    int numVertexComponents = 2 * (numLinesVertical * 2 + numLinesHorizontal * 2);
+    float points[numVertexComponents];
 
-    int numVertices = numLinesVertical * 2 + numLinesHorizontal * 2;
-
-    float points[numVertices * 2];
     for (int i = 0; i < numLinesHorizontal; i++)
     {
         points[i*4] = (i+1) * spacing;
@@ -109,6 +108,7 @@ void WorldRenderer::drawGrid(int spacing)
         points[i*4+2] = (i+1) * spacing;
         points[i*4+3] = height;
     }
+
     int offset = (numLinesHorizontal-1) * 4;
     for (int j = 0; j < numLinesVertical; j++)
     {
@@ -118,7 +118,7 @@ void WorldRenderer::drawGrid(int spacing)
         points[offset + j*4+3] = (j + 1) * spacing;
     }
 
-    glBufferData(GL_ARRAY_BUFFER, numVertices * 2 * sizeof(float), points, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
     glVertexAttribPointer(
         0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
         2,                  // size
@@ -127,7 +127,7 @@ void WorldRenderer::drawGrid(int spacing)
         0,                  // stride
         (void*)0            // array buffer offset
     );
-    glDrawArrays(GL_LINES, 0, numVertices);
+    glDrawArrays(GL_LINES, 0, sizeof(points) / sizeof(float));
 }
 
 void WorldRenderer::draw()
