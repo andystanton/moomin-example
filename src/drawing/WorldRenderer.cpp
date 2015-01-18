@@ -96,8 +96,8 @@ void WorldRenderer::drawGrid(int spacing)
 
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferGrid);
 
-    int numLinesHorizontal = (width / spacing) - 1;
-    int numLinesVertical = (height / spacing) - 1;
+    int numLinesHorizontal = width / spacing;
+    int numLinesVertical = height / spacing;
     int numVertexComponents = 2 * (numLinesVertical * 2 + numLinesHorizontal * 2);
     float points[numVertexComponents];
 
