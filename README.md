@@ -1,4 +1,4 @@
-# moomin-example [![Build Status](http://drone.cyniq.com/github.com/andystanton/moomin-example/status.svg?branch=master)](http://drone.cyniq.com/github.com/andystanton/moomin-example)
+# moomin-example [![Build Status](http://drone.cyniq.com/api/badge/github.com/andystanton/moomin-example/status.svg?branch=master)](http://drone.cyniq.com/github.com/andystanton/moomin-example)
 
 An example GLFW app using the Moomin physics engine.
 
